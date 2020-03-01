@@ -7,7 +7,7 @@ date: "3/1/2020"
 Bikeshare Project Analysis
 
 ### Description
-Describe what your project is about and what it does
+Analysing Bike Usage Data from New York,Chicago and Washington
 
 ### Files used
 Include the files used

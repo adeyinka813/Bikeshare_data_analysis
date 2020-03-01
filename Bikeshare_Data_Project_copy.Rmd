@@ -1,5 +1,6 @@
 ---
-#Change 1b graphs colour from blue to green
+#Change 2a graphs color from blue to green
+#Change 1b graphs color from blue to green
 title: "Bikeshare data Project"
 author: "Adeyinka Abigail Aremo"
 date: "2/8/2020"
@@ -129,7 +130,7 @@ by(chi1$Trip.Duration,chi1$User.Type,sum)   #Getting Chicago Trip Duration count
 qplot(x=Start.Station, #Plotting Start Station for New York.
 data=subset(ny,!is.na(Start.Station)),
 stat = ('count'),
-color=I('blue')) +
+color=I('green')) +
 xlab('Start Station in New York')+
 ylab("count")
 
@@ -141,7 +142,7 @@ filter(n==max(n))
 qplot(x=Start.Station, #Plotting Start Station for washington.
 data=subset(wash,!is.na(Start.Station)),
 stat = ('count'),
-color=I('blue')) +
+color=I('green')) +
 xlab('Start Station in Washington')+
 ylab("count")
 
@@ -153,7 +154,7 @@ filter(n==max(n))
 qplot(x=Start.Station, #Plotting Start Station for Chicago.
 data=subset(chi,!is.na(Start.Station)),
 stat = ('count'),
-color=I('blue')) +
+color=I('green')) +
 xlab('Start Station in Chicago')+
 ylab("count")
 

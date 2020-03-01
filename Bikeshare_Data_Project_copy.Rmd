@@ -1,4 +1,5 @@
 ---
+#Change 1b graphs colour from blue to green
 title: "Bikeshare data Project"
 author: "Adeyinka Abigail Aremo"
 date: "2/8/2020"
@@ -30,7 +31,7 @@ head(chi)
 
 #NUMBER 1.TRIP DURATION
 # Write a function to determine the mean of each dataset trip duration and determine the User types
-#that accumulately the most trip duration? 
+#that accumulately the most trip duration?
 
 ```{r MEAN FUNCTION FOR CITIES}
 #1a. Mean Function
@@ -56,13 +57,13 @@ mean.function(chi$Trip.Duration)  #Mean of Chicago Bikeshares Trip Duration
 
 #New York
 ny1=ny %>%            #Removing NA values for User Type in New York.
-mutate_if(is.factor,trimws) %>% 
-filter(User.Type!='') 
+mutate_if(is.factor,trimws) %>%
+filter(User.Type!='')
 
 qplot(x=Trip.Duration, #Plotting User Type Trip duration for New York.
 data=ny1,
 binwidth=100,
-color=I('blue')) +
+color=I('green')) +
 facet_wrap(~User.Type)+
 coord_cartesian(xlim =c (0,10000))+
 xlab('Trip Duration For People in New York')+
@@ -73,13 +74,13 @@ by(ny1$Trip.Duration,ny1$User.Type,sum)  #Getting New York Trip Duration count
 
 #Washington
 wash1=wash %>%        #Removing NA values for User Type in Washington
-mutate_if(is.factor,trimws) %>% 
-filter(User.Type!='') 
+mutate_if(is.factor,trimws) %>%
+filter(User.Type!='')
 
 qplot(x=Trip.Duration, #Plotting User.Group Trip duration for Washington.
 data=subset(wash1),
 binwidth=100,
-color=I('blue')) +
+color=I('green')) +
 facet_wrap(~User.Type)+
 coord_cartesian(xlim =c (0,15000))+
 xlab('Trip Duration for People in  Washington') +
@@ -90,13 +91,13 @@ by(wash1$Trip.Duration,wash1$User.Type,sum)   #Getting Washington Trip Duration 
 
 #Chicago
 chi1 =chi %>%     #Removing NA values for User Type in Chicago
-mutate_if(is.factor,trimws) %>% 
-filter(User.Type!='') 
+mutate_if(is.factor,trimws) %>%
+filter(User.Type!='')
 
 qplot(x=Trip.Duration, #Plotting User.Group Trip duration for Chicago.
 data=chi1,
 binwidth=100,
-color=I('blue')) +
+color=I('green')) +
 facet_wrap(~User.Type)+
 coord_cartesian(xlim =c (0,50000))+
 xlab('Trip Duration for People in  Chicago') +
@@ -109,10 +110,10 @@ by(chi1$Trip.Duration,chi1$User.Type,sum)   #Getting Chicago Trip Duration count
 
 #NUMBER 1b ANSWERS SUMMARY
 #New York
-#Subcribers has a higher accumulated trip duration of 206864152 compared to Customer with an accumulated trip of 
+#Subcribers has a higher accumulated trip duration of 206864152 compared to Customer with an accumulated trip of
 #62021801 Just as the plot depicted.
 #Washington
-#Washington bike data,Customers have a higher accumlated trip duration of 208740308 compared to 
+#Washington bike data,Customers have a higher accumlated trip duration of 208740308 compared to
 #subcribers accumulated trip duration of 162443678.
 #Chicago
 #Chicago bike data. Subcribers have a higher accumulated trip duration of 167054651 compared to customer and dependent
@@ -127,36 +128,36 @@ by(chi1$Trip.Duration,chi1$User.Type,sum)   #Getting Chicago Trip Duration count
 #New York
 qplot(x=Start.Station, #Plotting Start Station for New York.
 data=subset(ny,!is.na(Start.Station)),
-stat = ('count'), 
+stat = ('count'),
 color=I('blue')) +
 xlab('Start Station in New York')+
 ylab("count")
 
 ny %>%     #most popular start Station in New York.
-count(Start.Station) %>% 
+count(Start.Station) %>%
 filter(n==max(n))  
 
 #Washington
 qplot(x=Start.Station, #Plotting Start Station for washington.
 data=subset(wash,!is.na(Start.Station)),
-stat = ('count'), 
+stat = ('count'),
 color=I('blue')) +
 xlab('Start Station in Washington')+
 ylab("count")
 
 wash %>%    #most popular start Station in Washington.
-count(Start.Station) %>% 
+count(Start.Station) %>%
 filter(n==max(n))   
 
 #Chicago
 qplot(x=Start.Station, #Plotting Start Station for Chicago.
 data=subset(chi,!is.na(Start.Station)),
-stat = ('count'), 
+stat = ('count'),
 color=I('blue')) +
 xlab('Start Station in Chicago')+
 ylab("count")
 
-chi%>% 
+chi%>%
 count(Start.Station) %>%     #most popular start Station in Chicago.
 filter(n==max(n))  
 
@@ -164,7 +165,7 @@ filter(n==max(n))
 
 #NUMBER 2a ANSWER SUMMARY
 #The most used start station in New York is Pershing Square North with a count of 3069 as shown in the plot.
-#The most used start station in Washington is Columbus Circle/Union Station with a count of 5656 as shown in the plot. 
+#The most used start station in Washington is Columbus Circle/Union Station with a count of 5656 as shown in the plot.
 #The most used start station in Chicago is Streeter Dr and Grand Ave with a count of 6911 as shown in the plot.
 
 ```{r END STATION WITH THE HIGHEST COUNT}
@@ -173,43 +174,43 @@ filter(n==max(n))
 #New York
 qplot(x=End.Station, #Plotting Start Station for New York.
 data=subset(ny,!is.na(End.Station)),
-stat = ('count'), 
+stat = ('count'),
 color=I('blue')) +
 xlab('End Station in New York')+
 ylab("count")
 
 ny %>%     #most popular End Station in New York.
-count(End.Station) %>% 
+count(End.Station) %>%
 filter(n==max(n))  
 
 #Washington
 qplot(x=End.Station, #Plotting Start Station for washington.
 data=subset(wash,!is.na(End.Station)),
-stat = ('count'), 
+stat = ('count'),
 color=I('blue')) +
 xlab('End Station in Washington')+
 ylab("count")
 
 wash %>%    #most popular end Station in Washington.
-count(End.Station) %>% 
+count(End.Station) %>%
 filter(n==max(n))   
 
 #Chicago
 qplot(x=End.Station, #Plotting Start Station for washington.
 data=subset(chi,!is.na(End.Station)),
-stat = ('count'), 
+stat = ('count'),
 color=I('blue')) +
 xlab('End Station in Chicago')+
 ylab("count")
 
 chi %>%    #most popular end Station in Chicago.
-count(End.Station) %>% 
-filter(n==max(n)) 
+count(End.Station) %>%
+filter(n==max(n))
 ```
 
 #NUMBER 2b ANSWER SUMMARY
 #The most used end station in New York is Pershing Square North with a count of 30777 as shown in the plot.
-#The most used end station in Washington is Columbus Circle/Union Station with a count of 6048 as shown in the plot. 
+#The most used end station in Washington is Columbus Circle/Union Station with a count of 6048 as shown in the plot.
 #The most used end station in Chicago is Streeter Dr and Grand Ave with a count of 7512 as shown in the plot.
 
 #NUMBER 3 START TIME AND END TIME
@@ -224,7 +225,7 @@ mutate(Start.Time=ymd_hms(Start.Time))
 head(ny)
 
 ny=ny %>%       #mutating the start time and dividing by month
-mutate(month.name=month(Start.Time, 
+mutate(month.name=month(Start.Time,
 label = TRUE))
 
 qplot(x=month.name,     #Plotting the months in the start time against counts
@@ -234,8 +235,8 @@ xlab('New York months')+
 ylab('counts')
 
 ny %>%        #Getting the month with the highest count
-count(month.name) %>% 
-filter(n==max(n)) 
+count(month.name) %>%
+filter(n==max(n))
 
 #New York Start time Day of the week
 ny=ny%>%      #mutating the start time and dividing by day of the week
@@ -247,10 +248,10 @@ data=ny,
 color=I('green')) +
 xlab('New York Days of the week')+
 ylab('counts')
-      
+
 ny %>%        #Getting the day of the week with the highest count
-count(day_week) %>% 
-filter(n==max(n)) 
+count(day_week) %>%
+filter(n==max(n))
 
 #Washington
 #NWashington Start time Month
@@ -260,7 +261,7 @@ End.Time=ymd_hms(End.Time))
 head(wash)
 
 wash=wash %>%       #mutating the start time and dividing by month
-mutate(month.name=month(Start.Time, 
+mutate(month.name=month(Start.Time,
 label = TRUE))
 
 qplot(x=month.name,     #Plotting the months in the start time against counts
@@ -270,8 +271,8 @@ xlab('Washington months')+
 ylab('counts')
 
 wash %>%        #Getting the month with the highest count
-count(month.name) %>% 
-filter(n==max(n)) 
+count(month.name) %>%
+filter(n==max(n))
 
 #Washington Start time Day of the week
 wash=wash%>%      #mutating the start time and dividing by day of the week
@@ -285,7 +286,7 @@ xlab('Washington Days of the week')+
 ylab('counts')
 
 wash %>%        #Getting the day of the week with the highest count
-count(day_week) %>% 
+count(day_week) %>%
 filter(n==max(n))
 
 #Chicago
@@ -296,7 +297,7 @@ End.Time=ymd_hms(End.Time))
 head(chi)
 
 chi=chi %>%       #mutating the start time and dividing by month
-mutate(month.name=month(Start.Time, 
+mutate(month.name=month(Start.Time,
 label = TRUE))
 
 qplot(x=month.name,     #Plotting the months in the start time against counts
@@ -306,8 +307,8 @@ xlab('Chicago months')+
 ylab('counts')
 
 chi %>%        #Getting the month with the highest count
-count(month.name) %>% 
-filter(n==max(n)) 
+count(month.name) %>%
+filter(n==max(n))
 
 #Chicago Start time Day of the week
 chi=chi%>%      #mutating the start time and dividing by day of the week
@@ -321,7 +322,7 @@ xlab('Chicago Days of the week')+
 ylab('counts')
 
 chi %>%        #Getting the day of the week with the highest count
-count(day_week) %>% 
+count(day_week) %>%
 filter(n==max(n))
 ```
 
@@ -342,7 +343,7 @@ mutate(End.Time=ymd_hms(End.Time))
 head(ny)
 
 ny=ny %>%       #mutating the end time and dividing by month
-mutate(month.name=month(End.Time, 
+mutate(month.name=month(End.Time,
 label = TRUE))
 
 qplot(x=month.name,     #Plotting the months in the end time against counts
@@ -352,8 +353,8 @@ xlab('New York months')+
 ylab('counts')
 
 ny %>%        #Getting the month with the highest count
-count(month.name) %>% 
-filter(n==max(n)) 
+count(month.name) %>%
+filter(n==max(n))
 
 #New York Start time Day of the week
 ny=ny%>%      #mutating the end time and dividing by day of the week
@@ -367,8 +368,8 @@ xlab('New York Days of the week')+
 ylab('counts')
 
 ny %>%        #Getting the day of the week with the highest count
-count(day_week) %>% 
-filter(n==max(n)) 
+count(day_week) %>%
+filter(n==max(n))
 
 #Washington
 #NWashington End time Month
@@ -378,7 +379,7 @@ End.Time=ymd_hms(End.Time))
 head(wash)
 
 wash=wash %>%       #mutating the end time and dividing by month
-mutate(month.name=month(End.Time, 
+mutate(month.name=month(End.Time,
 label = TRUE))
 
 qplot(x=month.name,     #Plotting the months in the end time against counts
@@ -388,8 +389,8 @@ xlab('Washington months')+
 ylab('counts')
 
 wash %>%        #Getting the month with the highest count
-count(month.name) %>% 
-filter(n==max(n)) 
+count(month.name) %>%
+filter(n==max(n))
 
 #Washington Start time Day of the week
 wash=wash%>%      #mutating the end time and dividing by day of the week
@@ -403,7 +404,7 @@ xlab('Washington Days of the week')+
 ylab('counts')
 
 wash %>%        #Getting the day of the week with the highest count
-count(day_week) %>% 
+count(day_week) %>%
 filter(n==max(n))
 
 #Chicago
@@ -414,7 +415,7 @@ End.Time=ymd_hms(End.Time))
 head(chi)
 
 chi=chi %>%       #mutating the end time and dividing by month
-mutate(month.name=month(End.Time, 
+mutate(month.name=month(End.Time,
 label = TRUE))
 
 qplot(x=month.name,     #Plotting the months in the start time against counts
@@ -424,7 +425,7 @@ xlab('Chicago months')+
 ylab('counts')
 
 chi %>%        #Getting the month with the highest count
-count(month.name) %>% 
+count(month.name) %>%
 filter(n==max(n))
 
 #Chicago End time Day of the week
@@ -439,7 +440,7 @@ xlab('Chicago Days of the week')+
 ylab('counts')
 
 chi %>%        #Getting the day of the week with the highest count
-count(day_week) %>% 
+count(day_week) %>%
 filter(n==max(n))
 ```
 
@@ -450,5 +451,3 @@ filter(n==max(n))
 # Washington end time most populous day of the week is Wednesday with a count of 48134.
 # Chicago end time most populous month is June with a count of 98074.
 # Chicago start time most populous day of the week is Tuesday with a count of 45887.
-
-
